@@ -23,7 +23,7 @@ function loadData() {
     // YOUR CODE GOES HERE!
     var streetAddr = $('#street').val();
 	var cityName = $('#city').val();
-	$greeting.text = "Do you mean? " + streetAddr + "," +cityName
+	$greeting.text = "Do you mean? " + streetAddr + "," +cityName;
 	
 	var viewRequest = "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=" +streetAddr + "," +cityName;
 	
@@ -65,13 +65,11 @@ function loadData() {
 	$.getJSON(urlNYT, function(data){
 		$.each( data.response.docs, function( key, val ) {
 		  $("<li id='" + key + "' class='article'> " + "<a href='" + val.web_url + "'>" + val.headline.main + "</a>" + "<p>" + val.lead_paragraph + "</p></li>").appendTo("#nytimes-articles");
-	})
-	$nytHeaderElem.text("New York Times Articles about " +cityName);
-	}).error(function(err) {
-		$nytHeaderElem.text("New York Times Articles Could not be Loaded");
 	});
+	$nytHeaderElem.text("New York Times Articles about " +cityName);
+	}).fail(function() { $nytHeaderElem.text('New York Times Articles Could Not Be Loaded'); })
 
     return false;
-};
+}
 
 $('#form-container').submit(loadData);
