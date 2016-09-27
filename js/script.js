@@ -66,7 +66,7 @@ function loadData() {
 		$.each( data.response.docs, function( key, val ) {
 		  $("<li id='" + key + "' class='article'> " + "<a href='" + val.web_url + "'>" + val.headline.main + "</a>" + "<p>" + val.lead_paragraph + "</p></li>").appendTo("#nytimes-articles");
 	})
-	$nytHeaderElem.text("New York Times Articles");
+	$nytHeaderElem.text("New York Times Articles about " +cityName);
 	}).error(function(err) {
 		$nytHeaderElem.text("New York Times Articles Could not be Loaded");
 	});
