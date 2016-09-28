@@ -36,7 +36,6 @@ function loadData() {
 		'search': cityName, 
 		'format': "json",
 		'callback': "wikiCallback"});
-		console.log(urlWiki);
 		//'format': "jsonfm"});
 		
 	var wikiRequestTimeout = setTimeout(function(){
